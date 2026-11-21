@@ -34,7 +34,7 @@ label{display:block;font-size:12.5px;font-weight:600;margin-bottom:4px;color:var
 select,input[type=text],input[type=number]{width:100%;font:inherit;font-size:14px;padding:7px 9px;border:1px solid var(--ln);border-radius:8px;background:var(--pn);color:var(--ink)}
 input[type=color]{width:100%;height:36px;border:1px solid var(--ln);border-radius:8px;background:var(--pn);padding:3px}
 .chk{display:flex;gap:7px;align-items:center;font-weight:500;margin-top:24px;color:var(--ink)}.chk input{width:auto}
-#st{color:var(--mu);font-size:13px;margin-top:12px;min-height:1.3em}.how{color:var(--mu);font-size:12.5px;margin:12px 0 0;padding-top:12px;border-top:1px solid var(--ln)}
+#st{position:fixed;left:50%;transform:translateX(-50%);bottom:calc(18px + env(safe-area-inset-bottom,0px));z-index:50;max-width:min(560px,92vw);background:var(--ink);color:var(--pn);font-size:13.5px;padding:10px 16px;border-radius:10px;box-shadow:0 8px 30px rgba(0,0,0,.3)}#st:empty{display:none}.how{color:var(--mu);font-size:12.5px;margin:12px 0 0;padding-top:12px;border-top:1px solid var(--ln)}
 .docs{display:grid;grid-template-columns:repeat(auto-fill,minmax(330px,1fr));gap:18px}
 .card{padding:16px;display:flex;flex-direction:column;gap:12px;transition:.15s}.card:hover{border-color:color-mix(in srgb,var(--ac) 40%,var(--ln))}
 .ch{display:flex;gap:10px;align-items:center}.ch h3{margin:0;font-size:15px;flex:1;letter-spacing:-.005em}.ch input{width:16px;height:16px}
@@ -56,6 +56,10 @@ dialog[open]{display:flex;flex-direction:column}dialog::backdrop{background:rgba
 .dh{display:flex;gap:12px;align-items:center;padding:12px 18px;border-bottom:1px solid var(--ln)}.dh b{flex:1}.dh input{width:160px}
 #pages{flex:1;overflow:auto;padding:20px;display:flex;flex-wrap:wrap;gap:20px;align-content:flex-start;background:var(--bg)}
 #pages figure{margin:0}#pages canvas{display:block;border-radius:3px;box-shadow:0 4px 16px rgba(0,0,0,.25)}#pages figcaption{font-size:12px;color:var(--mu);margin-top:6px}
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:12px;margin-bottom:16px}
+.stat{background:var(--bg);border-radius:10px;padding:10px 14px;font-size:12.5px;color:var(--mu)}
+.stat span{display:block;font-size:22px;font-weight:700;color:var(--ink);letter-spacing:-.01em}
+.grp{margin-bottom:26px}.grp h2{margin:0 0 12px;padding-bottom:8px;border-bottom:1px solid var(--ln)}
 @media(max-width:640px){header{padding:18px 16px 22px}main{padding:16px}.hw{flex-wrap:wrap}h1{font-size:22px}.docs{grid-template-columns:1fr}.tb input{width:100%}}
 </style></head><body>
 <header><div class="hw"><div class="logo"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"/><path d="M14 3v5h5M9 13h6M9 17h4"/></svg></div>
@@ -65,10 +69,14 @@ dialog[open]{display:flex;flex-direction:column}dialog::backdrop{background:rgba
 <main>
 <ol class="steps"><li><b>Add images</b>Front and back of each document</li><li><b>Check previews</b>Rotate, reorder, fix warnings</li><li><b>Create PDFs</b>Optionally set a size limit</li><li><b>Download</b>Each PDF or all in one ZIP</li></ol>
 <section class="panel">
+ <div class="stats"><div class="stat"><span id="sDone">0/6</span>PDFs created</div><div class="stat"><span id="sImg">0</span>Images added</div><div class="stat"><span id="sReady">0</span>Ready to create</div><div class="stat"><span id="sSize">0 KB</span>Total PDF size</div></div>
  <div class="tb"><b id="ptxt">0 of 6 documents completed</b></div>
  <div class="prog"><div id="pbar"></div></div>
  <div class="tb"><button id="genAll" class="pri">Create all ready PDFs</button><button id="dlAll">Download all (ZIP)</button>
   <input id="mname" type="text" value="Merged_Documents" aria-label="Merged file name"><button id="merge">Merge selected into one PDF</button></div>
+ <h2>Applicant and presets</h2>
+ <div class="set" style="margin-bottom:6px"><div><label for="applicant">Applicant name (added to file names)</label><input id="applicant" type="text" placeholder="e.g. Ali Khan"></div>
+  <div><label for="preset">Quick preset</label><select id="preset"><option value="">Custom</option><option value="portal">Admission portal (max 2 MB each)</option><option value="email">Email (max 1 MB each)</option><option value="hq">High quality (no size limit)</option></select></div></div>
  <h2>PDF settings</h2>
  <div class="set">
   <div><label for="size">Page size</label><select id="size"><option value="a4">A4</option><option value="orig">Original image size</option></select></div>
@@ -85,13 +93,13 @@ dialog[open]{display:flex;flex-direction:column}dialog::backdrop{background:rgba
  <div id="st" aria-live="polite"></div>
 </section>
 <h2 class="sec">Your documents</h2>
-<div id="docs" class="docs"></div>
+<div id="docs"></div>
 </main>
 <dialog id="prev"><div class="dh"><b id="ptitle"></b><label for="zoom" style="margin:0">Zoom</label><input id="zoom" type="range" min="50" max="300" step="25" value="100"><button id="pclose">Close</button></div><div id="pages"></div></dialog>
 <input id="file" type="file" accept="image/jpeg,image/png,image/webp,image/gif,image/bmp,image/avif" hidden>
 <script>
 "use strict";
-const $=id=>document.getElementById(id),enc=new TextEncoder(),msg=t=>$("st").textContent=t;
+const $=id=>document.getElementById(id),enc=new TextEncoder(),mt={},msg=t=>{$("st").textContent=t;clearTimeout(mt.t);if(t&&!/^Processing/.test(t))mt.t=setTimeout(()=>$("st").textContent="",7000)};
 const esc=s=>String(s).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
 const fmt=n=>n>=1e6?(n/1e6).toFixed(2)+" MB":Math.round(n/1e3)+" KB";
 const SIZE_A4=[595.276,841.89];
@@ -108,7 +116,8 @@ let pick=null,busy=false,lastDoc=null,uid=0;
 const O=()=>({sz:$("size").value,or:$("orient").value,fit:$("fit").value,mar:Math.max(0,+$("margin").value||0)*72/25.4,dpi:Math.max(30,+$("dpi").value||150),bg:$("bg").value,pn:$("pnum").checked});
 function getTarget(){const v=$("target").value;if(v==="0")return 0;const mb=v==="custom"?+$("tcustom").value:+v;return mb>0?Math.round(mb*1e6):0}
 const dirty=d=>d.pdf=null;
-const fname=d=>(d.name.replace(/[^\w\-. ]/g,"").trim()||"Document")+".pdf";
+const clean=t=>t.replace(/[^\w\-. ]/g,"").trim().replace(/\s+/g,"_");
+const fname=d=>{const ap=clean($("applicant").value);return(ap?ap+"_":"")+(clean(d.name)||"Document")+".pdf"};
 const valid=d=>d.pages.some(Boolean)&&(!d.req||(d.pages[0]&&d.pages[1]));
 function docStatus(d){const n=d.pages.filter(Boolean).length;if(d.pdf)return["done","PDF generated"];if(!n)return["none","Not uploaded"];return valid(d)?["ready","Ready to generate"]:["part","Images uploaded"]}
 
@@ -161,9 +170,12 @@ function cardHTML(d){
   <div class="btns"><button data-a="prev" ${n?"":"disabled"}>Preview</button><button data-a="gen" class="pri" ${n?"":"disabled"}>${d.pdf?"Download PDF":"Create PDF"}</button><button data-a="split" ${n>1?"":"disabled"}>Split</button></div></article>`;
 }
 function render(){
-  $("docs").innerHTML=docs.map(cardHTML).join("");
+  const G={SSC:"SSC · Matric",HSSC:"HSSC · Intermediate",BS:"BS Degree",OTHER:"Other documents"};
+  $("docs").innerHTML=Object.keys(G).map(k=>`<div class="grp"><h2>${G[k]}</h2><div class="docs">${docs.filter(d=>d.id.split("_")[0]===k).map(cardHTML).join("")}</div></div>`).join("");
   const done=docs.filter(d=>d.req&&d.pdf).length;
-  $("pbar").style.width=done/6*100+"%";$("ptxt").textContent=`${done} of 6 documents completed`;
+  $("pbar").style.width=done/6*100+"%";
+  $("sDone").textContent=done+"/6";$("sImg").textContent=docs.reduce((s,d)=>s+d.pages.filter(Boolean).length,0);
+  $("sReady").textContent=docs.filter(d=>d.req&&valid(d)&&!d.pdf).length;$("sSize").textContent=fmt(docs.reduce((s,d)=>s+(d.pdf?d.pdf.size:0),0));$("ptxt").textContent=`${done} of 6 documents completed`;
   $("dpiWrap").style.display=$("size").value==="orig"?"":"none";
   $("tcustom").style.display=$("target").value==="custom"?"":"none";
 }
@@ -257,9 +269,9 @@ class PDF{
   alloc(){return++this.n}
   obj(id,dict,stream){this.offs[id]=this.len;this.w(`${id} 0 obj\n`);
     if(stream){this.w(`<< ${dict} /Length ${stream.length} >>\nstream\n`);this.w(stream);this.w("\nendstream\nendobj\n")}else this.w(`<< ${dict} >>\nendobj\n`)}
-  finish(root){const x=this.len;this.w(`xref\n0 ${this.n+1}\n0000000000 65535 f \n`);
+  finish(root,title){const x=this.len;this.w(`xref\n0 ${this.n+1}\n0000000000 65535 f \n`);
     for(let i=1;i<=this.n;i++)this.w(String(this.offs[i]).padStart(10,"0")+" 00000 n \n");
-    this.w(`trailer\n<< /Size ${this.n+1} /Root ${root} 0 R /Info << /Producer (Local Image to PDF) >> >>\nstartxref\n${x}\n%%EOF\n`);
+    this.w(`trailer\n<< /Size ${this.n+1} /Root ${root} 0 R /Info << /Title (${(title||"Academic documents").replace(/[()\\]/g,"")}) /Producer (Local Image to PDF) >> >>\nstartxref\n${x}\n%%EOF\n`);
     return new Blob(this.parts,{type:"application/pdf"})}
 }
 const f4=n=>(+n.toFixed(4)).toString(),hex=c=>[1,3,5].map(i=>f4(parseInt(c.substr(i,2),16)/255)).join(" ");
@@ -290,7 +302,7 @@ async function build(pages,ov,sizesIn){
     pdf.obj(gid,`/Type /Page /Parent ${pgs} 0 R /MediaBox [0 0 ${f4(L.pw)} ${f4(L.ph)}] /Contents ${cid} 0 R /Resources << /XObject << /Im0 ${iid} 0 R >> /Font << /F1 ${font} 0 R >> >>`);ids.push(gid);
   }
   pdf.obj(pgs,`/Type /Pages /Count ${ids.length} /Kids [${ids.map(i=>i+" 0 R").join(" ")}]`);pdf.obj(cat,`/Type /Catalog /Pages ${pgs} 0 R`);
-  return{blob:pdf.finish(cat),payload,sizes,changed:budgets.some(b=>b!=null)};
+  return{blob:pdf.finish(cat,(clean($("applicant").value).replace(/_/g," ")+" academic documents").trim()),payload,sizes,changed:budgets.some(b=>b!=null)};
 }
 // Builds, measures the real size, and re-balances until the PDF lands just under the limit
 async function makePDF(pages){
@@ -371,5 +383,12 @@ function drawPrev(){
 }
 $("zoom").oninput=drawPrev;$("pclose").onclick=()=>$("prev").close();
 $("prev").addEventListener("close",()=>{if(pv)pv.b.forEach(b=>b.close());pv=null});
+/* presets and remembered settings */
+const PRE={portal:{size:"a4",target:"2",margin:"5"},email:{size:"a4",target:"1",margin:"5"},hq:{size:"a4",target:"0",margin:"5"}};
+$("preset").onchange=()=>{const p=PRE[$("preset").value];if(p)for(const k in p)$(k).value=p[k];docs.forEach(dirty);render();save()};
+const KEYS=["applicant","size","dpi","orient","fit","margin","bg","target","tcustom","preset"];
+function save(){try{const o={};KEYS.forEach(k=>o[k]=$(k).value);o.pnum=$("pnum").checked;localStorage.setItem("cfg",JSON.stringify(o))}catch(_){}}
+try{const sv=JSON.parse(localStorage.getItem("cfg")||"{}");KEYS.forEach(k=>{if(sv[k]!=null)$(k).value=sv[k]});$("pnum").checked=!!sv.pnum}catch(_){}
+[...KEYS,"pnum"].forEach(k=>$(k).addEventListener("change",save));
 render();
 </script></body></html>
