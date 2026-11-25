@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html lang="en"><head><meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Academic Documents to PDF</title>
+<title>Identity Documents to PDF</title>
 <style>
-:root{--bg:#f3f5f9;--pn:#fff;--ink:#0f1a2b;--mu:#5d6b80;--ln:#e0e5ec;--ac:#1d4ed8;--ach:#1a43b8;--ai:#fff;--ok:#047857;--wr:#b45309;--hd1:#0b1f3f;--hd2:#173a73;--sh:0 1px 2px rgba(15,26,43,.05),0 4px 14px rgba(15,26,43,.06);box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
-:root[data-theme=dark]{--bg:#0a1017;--pn:#131b25;--ink:#e8edf4;--mu:#8d9bad;--ln:#233042;--ac:#5f86ff;--ach:#7b9bff;--ai:#08101f;--ok:#4cc790;--wr:#f0a94a;--hd1:#0d1a30;--hd2:#14284a;--sh:0 1px 2px rgba(0,0,0,.4),0 4px 14px rgba(0,0,0,.35)}
+:root{--bg:#f3f5f9;--pn:#fff;--ink:#0f1a2b;--mu:#5d6b80;--ln:#e0e5ec;--ac:#0f766e;--ach:#0b5e58;--ai:#fff;--ok:#047857;--wr:#b45309;--hd1:#08302d;--hd2:#0f5f5a;--sh:0 1px 2px rgba(15,26,43,.05),0 4px 14px rgba(15,26,43,.06);box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+:root[data-theme=dark]{--bg:#0a1017;--pn:#131b25;--ink:#e8edf4;--mu:#8d9bad;--ln:#233042;--ac:#2dd4bf;--ach:#5eead4;--ai:#08101f;--ok:#4cc790;--wr:#f0a94a;--hd1:#0a1f1e;--hd2:#0f3a38;--sh:0 1px 2px rgba(0,0,0,.4),0 4px 14px rgba(0,0,0,.35)}
 html{scroll-padding-top:env(safe-area-inset-top,0px)}*{box-sizing:border-box}
 body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.5 Inter,"Segoe UI",system-ui,-apple-system,Roboto,sans-serif;-webkit-font-smoothing:antialiased}
 header{background:linear-gradient(120deg,var(--hd1),var(--hd2));color:#fff;padding:26px 24px 30px}
@@ -62,12 +62,12 @@ dialog[open]{display:flex;flex-direction:column}dialog::backdrop{background:rgba
 .grp{margin-bottom:26px}.grp h2{margin:0 0 12px;padding-bottom:8px;border-bottom:1px solid var(--ln)}
 @media(max-width:640px){header{padding:18px 16px 22px}main{padding:16px}.hw{flex-wrap:wrap}h1{font-size:22px}.docs{grid-template-columns:1fr}.tb input{width:100%}}
 </style></head><body>
-<header><div class="hw"><div class="logo"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"/><path d="M14 3v5h5M9 13h6M9 17h4"/></svg></div>
-<div class="ht"><h1>Academic Documents to PDF</h1><p>Prepare Matric, Intermediate and BS degrees and transcripts for admissions, HEC verification and scholarships: front and back in one PDF per document.</p>
-<div class="badges"><span>🔒 Processed locally in your browser</span><span>No uploads or accounts</span><span>Original images never changed</span></div></div>
-<button id="theme" aria-label="Switch light or dark mode">◐ Theme</button></div></header>
+<header><div class="hw"><div class="logo"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2.5" y="5" width="19" height="14" rx="2.5"/><circle cx="8.5" cy="11" r="2.2"/><path d="M5.5 16c.6-1.6 1.7-2.3 3-2.3s2.4.7 3 2.3M14.5 9.5h4M14.5 12.5h4M14.5 15.5h2.5"/></svg></div>
+<div class="ht"><h1>Identity Documents to PDF</h1><p>Prepare your CNIC and Passport for university admissions, visa and scholarship portals: clean, correctly sized PDFs with optional watermark and size limits.</p>
+<div class="badges"><span>🔒 Processed locally in your browser</span><span>Nothing is uploaded or stored</span><span>Watermark option for safe sharing</span></div></div>
+<button id="theme" aria-label="Switch light or dark mode">◐ Theme</button></div></header></header>
 <main>
-<ol class="steps"><li><b>Add images</b>Front and back of each document</li><li><b>Check previews</b>Rotate, reorder, fix warnings</li><li><b>Create PDFs</b>Optionally set a size limit</li><li><b>Download</b>Each PDF or all in one ZIP</li></ol>
+<ol class="steps"><li><b>Add images</b>CNIC front and back, passport photo page</li><li><b>Check previews</b>Rotate, reorder, fix warnings</li><li><b>Create PDFs</b>Optionally set a size limit</li><li><b>Download</b>Each PDF or all in one ZIP</li></ol>
 <section class="panel">
  <div class="stats"><div class="stat"><span id="sDone">0/6</span>PDFs created</div><div class="stat"><span id="sImg">0</span>Images added</div><div class="stat"><span id="sReady">0</span>Ready to create</div><div class="stat"><span id="sSize">0 KB</span>Total PDF size</div></div>
  <div class="tb"><b id="ptxt">0 of 6 documents completed</b></div>
@@ -88,11 +88,13 @@ dialog[open]{display:flex;flex-direction:column}dialog::backdrop{background:rgba
   <div><label for="target">Max size per PDF</label><select id="target"><option value="0">Original quality</option><option value="0.5">0.5 MB</option><option value="1">1 MB</option><option value="2">2 MB</option><option value="3">3 MB</option><option value="4">4 MB</option><option value="5">5 MB</option><option value="10">10 MB</option><option value="custom">Custom…</option></select>
    <input id="tcustom" type="number" min="0.05" step="0.1" value="2" aria-label="Custom MB" style="display:none;margin-top:5px"></div>
   <label class="chk"><input id="pnum" type="checkbox"> Page numbers</label>
+  <div><label for="wm">Watermark text (optional)</label><input id="wm" type="text" placeholder="e.g. For admission use only"></div>
+  <label class="chk"><input id="combine" type="checkbox" checked> CNIC: front and back on one page</label>
  </div>
  <p class="how">With a size limit, resolution is reduced first and JPEG quality stays high, so text, stamps and QR codes stay readable. 1 MB = 1,000,000 bytes.</p>
  <div id="st" aria-live="polite"></div>
 </section>
-<h2 class="sec">Your documents</h2>
+<h2 class="sec">Your identity documents</h2>
 <div id="docs"></div>
 </main>
 <dialog id="prev"><div class="dh"><b id="ptitle"></b><label for="zoom" style="margin:0">Zoom</label><input id="zoom" type="range" min="50" max="300" step="25" value="100"><button id="pclose">Close</button></div><div id="pages"></div></dialog>
@@ -108,17 +110,19 @@ document.documentElement.dataset.theme=T||(matchMedia("(prefers-color-scheme:dar
 $("theme").onclick=()=>{const r=document.documentElement,n=r.dataset.theme==="dark"?"light":"dark";r.dataset.theme=n;try{localStorage.setItem("theme",n)}catch(_){}};
 
 /* ---------- data ---------- */
-const docs=[];
-for(const g of["SSC","HSSC","BS"])for(const t of["Degree","Transcript"])
-  docs.push({id:g+"_"+t,req:true,title:`${g} ${t==="Degree"?"Degree / Certificate":"Transcript / Marks Sheet"}`,name:`${g}_${t}`,pages:[null,null],pdf:null,sel:false});
-docs.push({id:"OTHER",req:false,title:"Other documents (any pages)",name:"Documents",pages:[],pdf:null,sel:false});
+const docs=[
+ {id:"CNIC",grp:"CNIC",req:true,need:2,labels:["Front","Back"],combine:true,title:"CNIC / Smart ID Card",name:"CNIC"},
+ {id:"GCNIC",grp:"CNIC",req:true,opt:true,need:2,labels:["Front","Back"],combine:true,title:"Parent / Guardian CNIC (optional)",name:"Guardian_CNIC"},
+ {id:"PASSPORT",grp:"PASSPORT",req:true,need:1,labels:["Photo / data page","Last page (optional)"],title:"Passport",name:"Passport"},
+ {id:"OTHER",grp:"OTHER",req:false,title:"Other ID documents (any pages)",name:"ID_Documents"}
+].map(d=>({pages:d.req?[null,null]:[],pdf:null,sel:false,...d}));
 let pick=null,busy=false,lastDoc=null,uid=0;
-const O=()=>({sz:$("size").value,or:$("orient").value,fit:$("fit").value,mar:Math.max(0,+$("margin").value||0)*72/25.4,dpi:Math.max(30,+$("dpi").value||150),bg:$("bg").value,pn:$("pnum").checked});
+const O=()=>({sz:$("size").value,or:$("orient").value,fit:$("fit").value,mar:Math.max(0,+$("margin").value||0)*72/25.4,dpi:Math.max(30,+$("dpi").value||150),bg:$("bg").value,pn:$("pnum").checked,wm:$("wm").value.replace(/[^\x20-\x7e]/g,"").replace(/[()\\]/g,"").trim().slice(0,60)});
 function getTarget(){const v=$("target").value;if(v==="0")return 0;const mb=v==="custom"?+$("tcustom").value:+v;return mb>0?Math.round(mb*1e6):0}
 const dirty=d=>d.pdf=null;
 const clean=t=>t.replace(/[^\w\-. ]/g,"").trim().replace(/\s+/g,"_");
 const fname=d=>{const ap=clean($("applicant").value);return(ap?ap+"_":"")+(clean(d.name)||"Document")+".pdf"};
-const valid=d=>d.pages.some(Boolean)&&(!d.req||(d.pages[0]&&d.pages[1]));
+const valid=d=>d.pages.some(Boolean)&&(!d.req||d.pages.slice(0,d.need).every(Boolean));
 function docStatus(d){const n=d.pages.filter(Boolean).length;if(d.pdf)return["done","PDF generated"];if(!n)return["none","Not uploaded"];return valid(d)?["ready","Ready to generate"]:["part","Images uploaded"]}
 
 /* ---------- loading and quality checks ---------- */
@@ -153,7 +157,7 @@ async function place(d,idx,files){
 
 /* ---------- rendering ---------- */
 function slotHTML(d,p,i){
-  const lab=d.req&&i<2?(i?"Back":"Front"):"Page "+(i+1);
+  const lab=d.labels&&i<d.labels.length?d.labels[i]:"Page "+(i+1);
   return `<div class="slot" data-i="${i}"><div class="lab">${lab}</div>
   <div class="th${p?"":" empty"}" data-a="pick" tabindex="0" role="button" aria-label="Upload ${lab}">${p?`<img alt="${lab}" src="${p.url}" style="transform:rotate(${p.rot}deg)">`:"Drop image or click"}</div>
   ${p?`<div class="m" title="${esc(p.name)}">${esc(p.name)} · ${p.w}×${p.h}</div>${p.warn.map(w=>`<span class="wn">⚠ ${w}</span>`).join("")}
@@ -161,7 +165,7 @@ function slotHTML(d,p,i){
 }
 function cardHTML(d){
   const[cls,txt]=docStatus(d),n=d.pages.filter(Boolean).length;
-  const miss=d.req&&n&&!(d.pages[0]&&d.pages[1])?(d.pages[0]?"Back":"Front")+" image missing":"";
+  const mi=d.req?d.pages.slice(0,d.need).findIndex(x=>!x):-1,miss=n&&mi>=0?d.labels[mi]+" image missing":"";
   const info=d.pdf?`PDF ${fmt(d.pdf.size)} · ${n} page${n>1?"s":""}`:miss?`<b class="wn">⚠ ${miss}</b>`:`${n} image${n===1?"":"s"}`;
   return `<article class="card" data-d="${d.id}"><div class="ch"><input type="checkbox" data-a="sel" ${d.sel?"checked":""} aria-label="Select for merge"><h3>${d.title}</h3><span class="st ${cls}">${txt}</span></div>
   <div class="slots">${d.pages.map((p,i)=>slotHTML(d,p,i)).join("")}</div>
@@ -170,12 +174,12 @@ function cardHTML(d){
   <div class="btns"><button data-a="prev" ${n?"":"disabled"}>Preview</button><button data-a="gen" class="pri" ${n?"":"disabled"}>${d.pdf?"Download PDF":"Create PDF"}</button><button data-a="split" ${n>1?"":"disabled"}>Split</button></div></article>`;
 }
 function render(){
-  const G={SSC:"SSC · Matric",HSSC:"HSSC · Intermediate",BS:"BS Degree",OTHER:"Other documents"};
-  $("docs").innerHTML=Object.keys(G).map(k=>`<div class="grp"><h2>${G[k]}</h2><div class="docs">${docs.filter(d=>d.id.split("_")[0]===k).map(cardHTML).join("")}</div></div>`).join("");
-  const done=docs.filter(d=>d.req&&d.pdf).length;
-  $("pbar").style.width=done/6*100+"%";
-  $("sDone").textContent=done+"/6";$("sImg").textContent=docs.reduce((s,d)=>s+d.pages.filter(Boolean).length,0);
-  $("sReady").textContent=docs.filter(d=>d.req&&valid(d)&&!d.pdf).length;$("sSize").textContent=fmt(docs.reduce((s,d)=>s+(d.pdf?d.pdf.size:0),0));$("ptxt").textContent=`${done} of 6 documents completed`;
+  const G={CNIC:"CNIC · National identity card",PASSPORT:"Passport",OTHER:"Other documents"};
+  $("docs").innerHTML=Object.keys(G).map(k=>`<div class="grp"><h2>${G[k]}</h2><div class="docs">${docs.filter(d=>d.grp===k).map(cardHTML).join("")}</div></div>`).join("");
+  const core=docs.filter(d=>d.req&&!d.opt),done=core.filter(d=>d.pdf).length,N=core.length;
+  $("pbar").style.width=done/N*100+"%";
+  $("sDone").textContent=done+"/"+N;$("sImg").textContent=docs.reduce((s,d)=>s+d.pages.filter(Boolean).length,0);
+  $("sReady").textContent=docs.filter(d=>d.req&&valid(d)&&!d.pdf).length;$("sSize").textContent=fmt(docs.reduce((s,d)=>s+(d.pdf?d.pdf.size:0),0));$("ptxt").textContent=`${done} of ${N} documents completed`;
   $("dpiWrap").style.display=$("size").value==="orig"?"":"none";
   $("tcustom").style.display=$("target").value==="custom"?"":"none";
 }
@@ -186,7 +190,7 @@ $("docs").addEventListener("click",e=>{
   if(a==="sel"){d.sel=t.checked;return}if(a==="name")return;
   if(a==="pick"||a==="add"){pick={d,idx:a==="add"?"add":i};$("file").multiple=a==="add";$("file").click();return}
   if(a==="rot"){d.pages[i].rot=(d.pages[i].rot+90)%360;dirty(d);render()}
-  if(a==="rm"){URL.revokeObjectURL(d.pages[i].url);if(d.req&&i<2)d.pages[i]=null;else d.pages.splice(i,1);dirty(d);render()}
+  if(a==="rm"){URL.revokeObjectURL(d.pages[i].url);if(d.labels&&i<d.labels.length)d.pages[i]=null;else d.pages.splice(i,1);dirty(d);render()}
   if(a==="mv"){const j=i+ +t.dataset.s;if(j>=0&&j<d.pages.length){[d.pages[i],d.pages[j]]=[d.pages[j],d.pages[i]];dirty(d);render()}}
   if(a==="prev")run(()=>openPreview(d));
   if(a==="gen")run(async()=>{if(!d.pdf&&!await gen(d))return;await saveBlob(d.pdf.blob,fname(d))});
@@ -201,7 +205,7 @@ $("docs").addEventListener("dragleave",e=>hl(e,false));
 $("docs").addEventListener("drop",e=>{e.preventDefault();hl(e,false);const c=e.target.closest(".card");if(!c)return;const s=e.target.closest(".slot");place(docOf(c),s?+s.dataset.i:"add",[...e.dataTransfer.files])});
 window.addEventListener("dragover",e=>e.preventDefault());window.addEventListener("drop",e=>e.preventDefault());
 window.addEventListener("paste",e=>{if(e.clipboardData.files.length)place(lastDoc||docs[0],"add",[...e.clipboardData.files])});
-["size","orient","fit","margin","dpi","bg","pnum","target","tcustom"].forEach(id=>$(id).addEventListener("change",()=>{docs.forEach(dirty);render()}));
+["size","orient","fit","margin","dpi","bg","pnum","target","tcustom","combine","wm"].forEach(id=>$(id).addEventListener("change",()=>{docs.forEach(dirty);render()}));
 
 /* ---------- JPEG header ---------- */
 function jpegInfo(u){
@@ -284,32 +288,49 @@ function layout(p,o){
   const dw=ew*s,dh=eh*s,iw=swap?dh:dw,ih=swap?dw:dh,a=-p.rot*Math.PI/180,c=Math.round(Math.cos(a)),sn=Math.round(Math.sin(a));
   return{pw,ph,cw,ch,iw,ih,c,sn,tx:pw/2-(.5*iw*c-.5*ih*sn),ty:ph/2-(.5*iw*sn+.5*ih*c)};
 }
-async function build(pages,ov,sizesIn){
-  const o=O(),pdf=new PDF(),cat=pdf.alloc(),pgs=pdf.alloc(),font=pdf.alloc(),ids=[];
+function place(p,bx){
+  const swap=p.rot%180!==0,ew=swap?p.h:p.w,eh=swap?p.w:p.h,s=Math.min(bx.w/ew,bx.h/eh),dw=ew*s,dh=eh*s,iw=swap?dh:dw,ih=swap?dw:dh;
+  const a=-p.rot*Math.PI/180,c=Math.round(Math.cos(a)),sn=Math.round(Math.sin(a)),cx=bx.x+bx.w/2,cy=bx.y+bx.h/2;
+  return{iw,ih,c,sn,tx:cx-(.5*iw*c-.5*ih*sn),ty:cy-(.5*iw*sn+.5*ih*c)};
+}
+// A "sheet" is one PDF page: either one image per page, or both CNIC sides stacked on one A4 page
+function sheets(pages,o,combine){
+  const wm=(w,h)=>o.wm?{t:o.wm,size:Math.min(44,Math.hypot(w,h)*.75/(.52*o.wm.length))}:null;
+  if(combine&&pages.length===2){
+    const[pw,ph]=SIZE_A4,m=Math.max(o.mar,28),gap=24,w=pw-2*m,h=(ph-2*m-gap)/2;
+    return[{pw,ph,wm:wm(pw,ph),parts:pages.map((p,k)=>({k,M:place(p,{x:m,y:k?m:m+h+gap,w,h})}))}];
+  }
+  return pages.map((p,k)=>{const L=layout(p,o);return{pw:L.pw,ph:L.ph,wm:wm(L.pw,L.ph),clip:o.fit==="cover"&&o.sz!=="orig"?[o.mar,o.mar,L.cw,L.ch]:null,parts:[{k,M:L}]}});
+}
+async function build(pages,ov,sizesIn,combine){
+  const o=O(),pdf=new PDF(),cat=pdf.alloc(),pgs=pdf.alloc(),font=pdf.alloc(),ids=[],X=[];
   pdf.obj(font,"/Type /Font /Subtype /Type1 /BaseFont /Helvetica");
   const budgets=allocate(pages,getTarget(),ov,sizesIn),sizes=[];let payload=0;
   for(let i=0;i<pages.length;i++){
     const p=pages[i];msg(`Processing image ${i+1} of ${pages.length}: ${p.name}`);await new Promise(r=>setTimeout(r));
     const im=await prepare(p,budgets[i],o.bg),by=im.data.length+(im.smask?im.smask.length:0);payload+=by;sizes[i]=budgets[i]==null?by:null;
-    const L=layout(p,o),iid=pdf.alloc();let sm="";
+    const iid=pdf.alloc();let sm="";
     if(im.smask){const sid=pdf.alloc();pdf.obj(sid,`/Type /XObject /Subtype /Image /Width ${im.w} /Height ${im.h} /ColorSpace /DeviceGray /BitsPerComponent 8 /Filter /FlateDecode`,im.smask);sm=` /SMask ${sid} 0 R`}
-    pdf.obj(iid,`/Type /XObject /Subtype /Image /Width ${im.w} /Height ${im.h} /ColorSpace ${im.cs} /BitsPerComponent 8 /Filter ${im.filter}${sm}`,im.data);
-    let cs=`${hex(o.bg)} rg 0 0 ${f4(L.pw)} ${f4(L.ph)} re f\n`;
-    if(o.fit==="cover"&&o.sz!=="orig")cs+=`${f4(o.mar)} ${f4(o.mar)} ${f4(L.cw)} ${f4(L.ch)} re W n\n`;
-    cs+=`q ${f4(L.iw*L.c)} ${f4(L.iw*L.sn)} ${f4(-L.ih*L.sn)} ${f4(L.ih*L.c)} ${f4(L.tx)} ${f4(L.ty)} cm /Im0 Do Q\n`;
-    if(o.pn){const t=String(i+1);cs+=`BT /F1 9 Tf 0.45 g ${f4(L.pw/2-2.5*t.length)} ${f4(Math.max(8,o.mar/2-3))} Td (${t}) Tj ET\n`}
-    const cid=pdf.alloc();pdf.obj(cid,"",enc.encode(cs));const gid=pdf.alloc();
-    pdf.obj(gid,`/Type /Page /Parent ${pgs} 0 R /MediaBox [0 0 ${f4(L.pw)} ${f4(L.ph)}] /Contents ${cid} 0 R /Resources << /XObject << /Im0 ${iid} 0 R >> /Font << /F1 ${font} 0 R >> >>`);ids.push(gid);
+    pdf.obj(iid,`/Type /XObject /Subtype /Image /Width ${im.w} /Height ${im.h} /ColorSpace ${im.cs} /BitsPerComponent 8 /Filter ${im.filter}${sm}`,im.data);X.push(iid);
   }
+  sheets(pages,o,combine).forEach((S,si)=>{
+    let cs=`${hex(o.bg)} rg 0 0 ${f4(S.pw)} ${f4(S.ph)} re f\n`;
+    if(S.clip)cs+=`${S.clip.map(f4).join(" ")} re W n\n`;
+    S.parts.forEach((t,j)=>{const M=t.M;cs+=`q ${f4(M.iw*M.c)} ${f4(M.iw*M.sn)} ${f4(-M.ih*M.sn)} ${f4(M.ih*M.c)} ${f4(M.tx)} ${f4(M.ty)} cm /Im${j} Do Q\n`});
+    if(S.wm){const w=S.wm,a=.7071,hl=.26*w.size*w.t.length*a;cs+=`q /G1 gs BT /F1 ${f4(w.size)} Tf 0.3 g ${a} ${a} ${-a} ${a} ${f4(S.pw/2-hl)} ${f4(S.ph/2-hl)} Tm (${w.t}) Tj ET Q\n`}
+    if(o.pn){const t=String(si+1);cs+=`BT /F1 9 Tf 0.45 g ${f4(S.pw/2-2.5*t.length)} ${f4(Math.max(8,o.mar/2-3))} Td (${t}) Tj ET\n`}
+    const cid=pdf.alloc();pdf.obj(cid,"",enc.encode(cs));const gid=pdf.alloc();
+    pdf.obj(gid,`/Type /Page /Parent ${pgs} 0 R /MediaBox [0 0 ${f4(S.pw)} ${f4(S.ph)}] /Contents ${cid} 0 R /Resources << /XObject << ${S.parts.map((t,j)=>`/Im${j} ${X[t.k]} 0 R`).join(" ")} >> /Font << /F1 ${font} 0 R >> /ExtGState << /G1 << /ca 0.22 /CA 0.22 >> >> >>`);ids.push(gid);
+  });
   pdf.obj(pgs,`/Type /Pages /Count ${ids.length} /Kids [${ids.map(i=>i+" 0 R").join(" ")}]`);pdf.obj(cat,`/Type /Catalog /Pages ${pgs} 0 R`);
-  return{blob:pdf.finish(cat,(clean($("applicant").value).replace(/_/g," ")+" academic documents").trim()),payload,sizes,changed:budgets.some(b=>b!=null)};
+  return{blob:pdf.finish(cat,(clean($("applicant").value).replace(/_/g," ")+" identity documents").trim()),payload,sizes,changed:budgets.some(b=>b!=null)};
 }
 // Builds, measures the real size, and re-balances until the PDF lands just under the limit
-async function makePDF(pages){
-  const target=getTarget();let r=await build(pages),best=r;
+async function makePDF(pages,combine){
+  const target=getTarget();let r=await build(pages,null,null,combine),best=r;
   for(let p=0;target&&p<3;p++){
     if(r.blob.size<=target&&r.blob.size>=target*0.97)break;if(!r.changed)break;
-    r=await build(pages,r.blob.size-r.payload,r.sizes);const bs=best.blob.size;
+    r=await build(pages,r.blob.size-r.payload,r.sizes,combine);const bs=best.blob.size;
     if((r.blob.size<=target&&(bs>target||r.blob.size>bs))||(bs>target&&r.blob.size<bs))best=r;
   }
   return best.blob;
@@ -317,8 +338,8 @@ async function makePDF(pages){
 
 /* ---------- actions ---------- */
 async function gen(d){
-  if(!valid(d)){msg(`${d.title}: upload both front and back images first.`);return false}
-  const b=await makePDF(d.pages.filter(Boolean));d.pdf={blob:b,size:b.size};
+  if(!valid(d)){msg(`${d.title}: upload the required images first.`);return false}
+  const b=await makePDF(d.pages.filter(Boolean),d.combine&&$("combine").checked);d.pdf={blob:b,size:b.size};
   msg(`${fname(d)} created: ${fmt(b.size)}.`);return true;
 }
 async function saveBlob(blob,name){
@@ -334,7 +355,7 @@ $("genAll").onclick=()=>run(async()=>{const n=await genAll();msg(n?`Created ${n}
 $("dlAll").onclick=()=>run(async()=>{
   await genAll();const files=docs.filter(d=>d.pdf).map(d=>({name:fname(d),blob:d.pdf.blob}));
   if(!files.length){msg("No documents are ready yet.");return}
-  const skipped=docs.filter(d=>d.req&&!d.pdf).length;
+  const skipped=docs.filter(d=>d.req&&!d.opt&&!d.pdf).length;
   await saveBlob(await zip(files),"Academic_Documents.zip");msg(`ZIP saved with ${files.length} PDF${files.length>1?"s":""}.`+(skipped?` ${skipped} document${skipped>1?"s":""} not included (not ready).`:""));
 });
 $("merge").onclick=()=>run(async()=>{
@@ -367,18 +388,20 @@ async function zip(files){
 /* ---------- preview with zoom (draws each page exactly as the PDF lays it out) ---------- */
 let pv=null;
 async function openPreview(d){
-  const pg=d.pages.filter(Boolean);$("ptitle").textContent=d.title+" · "+pg.length+" page"+(pg.length>1?"s":"");
-  pv={pg,b:await Promise.all(pg.map(p=>createImageBitmap(p.file)))};$("zoom").value=100;$("prev").showModal();drawPrev();
+  const pg=d.pages.filter(Boolean);$("ptitle").textContent=d.title+" · "+pg.length+" image"+(pg.length>1?"s":"");
+  pv={pg,combine:!!(d.combine&&$("combine").checked),b:await Promise.all(pg.map(p=>createImageBitmap(p.file)))};$("zoom").value=100;$("prev").showModal();drawPrev();
 }
 function drawPrev(){
   if(!pv)return;const o=O(),z=+$("zoom").value/100,box=$("pages");box.innerHTML="";
-  pv.pg.forEach((p,i)=>{
-    const L=layout(p,o),sc=520*z/L.pw,cv=document.createElement("canvas"),fg=document.createElement("figure"),cx=cv.getContext("2d");
-    cv.width=Math.round(L.pw*sc);cv.height=Math.round(L.ph*sc);cx.fillStyle=o.bg;cx.fillRect(0,0,cv.width,cv.height);
-    cx.setTransform(sc,0,0,-sc,0,L.ph*sc);
-    if(o.fit==="cover"&&o.sz!=="orig"){cx.beginPath();cx.rect(o.mar,o.mar,L.cw,L.ch);cx.clip()}
-    cx.transform(L.iw*L.c,L.iw*L.sn,-L.ih*L.sn,L.ih*L.c,L.tx,L.ty);cx.scale(1,-1);cx.imageSmoothingQuality="high";cx.drawImage(pv.b[i],0,-1,1,1);
-    fg.append(cv);const cap=document.createElement("figcaption");cap.textContent=`Page ${i+1} · ${Math.round(L.pw)}×${Math.round(L.ph)} pt`;fg.append(cap);box.append(fg);
+  sheets(pv.pg,o,pv.combine).forEach((S,i)=>{
+    const sc=520*z/S.pw,cv=document.createElement("canvas"),fg=document.createElement("figure"),cx=cv.getContext("2d");
+    cv.width=Math.round(S.pw*sc);cv.height=Math.round(S.ph*sc);cx.fillStyle=o.bg;cx.fillRect(0,0,cv.width,cv.height);
+    cx.save();cx.setTransform(sc,0,0,-sc,0,S.ph*sc);
+    if(S.clip){cx.beginPath();cx.rect(...S.clip);cx.clip()}
+    S.parts.forEach(t=>{const M=t.M;cx.save();cx.transform(M.iw*M.c,M.iw*M.sn,-M.ih*M.sn,M.ih*M.c,M.tx,M.ty);cx.scale(1,-1);cx.imageSmoothingQuality="high";cx.drawImage(pv.b[t.k],0,-1,1,1);cx.restore()});
+    cx.restore();
+    if(S.wm){cx.globalAlpha=.22;cx.fillStyle="#222";cx.font=`${S.wm.size*sc}px Helvetica,Arial,sans-serif`;cx.textAlign="center";cx.translate(cv.width/2,cv.height/2);cx.rotate(-Math.PI/4);cx.fillText(S.wm.t,0,0)}
+    fg.append(cv);const cap=document.createElement("figcaption");cap.textContent=`Page ${i+1} · ${Math.round(S.pw)}×${Math.round(S.ph)} pt`+(S.parts.length>1?" · front and back":"");fg.append(cap);box.append(fg);
   });
 }
 $("zoom").oninput=drawPrev;$("pclose").onclick=()=>$("prev").close();
@@ -386,9 +409,9 @@ $("prev").addEventListener("close",()=>{if(pv)pv.b.forEach(b=>b.close());pv=null
 /* presets and remembered settings */
 const PRE={portal:{size:"a4",target:"2",margin:"5"},email:{size:"a4",target:"1",margin:"5"},hq:{size:"a4",target:"0",margin:"5"}};
 $("preset").onchange=()=>{const p=PRE[$("preset").value];if(p)for(const k in p)$(k).value=p[k];docs.forEach(dirty);render();save()};
-const KEYS=["applicant","size","dpi","orient","fit","margin","bg","target","tcustom","preset"];
-function save(){try{const o={};KEYS.forEach(k=>o[k]=$(k).value);o.pnum=$("pnum").checked;localStorage.setItem("cfg",JSON.stringify(o))}catch(_){}}
-try{const sv=JSON.parse(localStorage.getItem("cfg")||"{}");KEYS.forEach(k=>{if(sv[k]!=null)$(k).value=sv[k]});$("pnum").checked=!!sv.pnum}catch(_){}
+const KEYS=["applicant","size","dpi","orient","fit","margin","bg","target","tcustom","preset","wm"];
+function save(){try{const o={};KEYS.forEach(k=>o[k]=$(k).value);o.pnum=$("pnum").checked;o.combine=$("combine").checked;localStorage.setItem("cfgId",JSON.stringify(o))}catch(_){}}
+try{const sv=JSON.parse(localStorage.getItem("cfgId")||"{}");KEYS.forEach(k=>{if(sv[k]!=null)$(k).value=sv[k]});$("pnum").checked=!!sv.pnum;$("combine").checked=sv.combine!==false}catch(_){}
 [...KEYS,"pnum"].forEach(k=>$(k).addEventListener("change",save));
 render();
 </script></body></html>
